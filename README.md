@@ -8,7 +8,7 @@ them with your algorithm and save the output retaining the same input structure
 
 You can easily install the package using
 
-`pip install tree-handler`
+`pip install treeHandler`
 
 ### Usage
 This package will help you to find all/specific files from the subdirectories of a given directory.
@@ -18,7 +18,7 @@ eg:
 If you have a complex tree structured folder and you need to get all the
 images('.jpg','.png') from the folder, use
 ```python
-from tree-handler import treeHandler
+from treeHandler import treeHandler
 th=treeHandler()
 imageList=th.getFiles('inputFolder',['jpg','png'])
 

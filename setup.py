@@ -4,7 +4,7 @@ with open('README.md','r') as f:
     long_description = f.read()
 
 
-setup(name='tree-handler',
+setup(name='treeHandler',
       version='1.0',
       description='Python OS wrapper to grab all/specific files from all the subdirectories',
       long_description=long_description,
@@ -13,6 +13,6 @@ setup(name='tree-handler',
       authors='Sreekiran A R`',
       author_email='sreekiranar@gmail.com',
       license='MIT',
-      packages=['tree-handler'],
+      packages=['treeHandler'],
       install_requires=['MakeTreeDir'], include_package_data=True,
       zip_safe=False)

@@ -1,5 +1,4 @@
 import os
-from MakeTreeDir import MAKETREEDIR
 
 class treeHandler:
 	'''	OS wrapper to grab files from a tree structured folders, process
@@ -21,7 +20,7 @@ class treeHandler:
 		Examples
 			If you want to get all the images('.jpg','.png') from all the subdirectories
 			of "mainFolder"
-			>>> from tree-handler import treeHandler
+			>>> from treeHandler import treeHandler
 			>>> th=treeHandler()
 			>>> imageList=th.getFiles('mainFolder',['jpg','png'],caseSensitive=False)
 
@@ -32,10 +31,9 @@ class treeHandler:
 		    for fil in files:
 		        listFiles.append(os.path.join(root,fil))
 
-		for format in formatList:
-			if not caseSensitive:
-				listFiles=list(filter(lambda x:x.lower().endswith(format.lower())))
+		for frmt in formatList:
+			if caseSensitive:
+				listFiles=list(filter(lambda x:x.endswith(frmt),listFiles))
 			else:
-				listFiles=list(filter(lambda x:x.endswith(format))
-
+				listFiles=list(filter(lambda x:x.lower().endswith(frmt.lower()),listFiles))
 		return listFiles
