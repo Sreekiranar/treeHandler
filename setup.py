@@ -5,7 +5,7 @@ with open('README.md','r') as f:
 
 
 setup(name='treeHandler',
-      version='1.1',
+      version='1.2',
       description='Python OS wrapper to grab all/specific files from all the subdirectories',
       long_description=long_description,
       long_description_content_type="text/markdown",

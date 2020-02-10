@@ -36,4 +36,7 @@ class treeHandler:
 				listFiles=list(filter(lambda x:x.endswith(frmt),listFiles))
 			else:
 				listFiles=list(filter(lambda x:x.lower().endswith(frmt.lower()),listFiles))
+		if len(listFiles)>0:
+			sep='/' if '/' in listFiles[0] else '\\'
+			listFiles=list(map(lambda x:os.path.join(*x.split(sep)[1:]),listFiles))
 		return listFiles
