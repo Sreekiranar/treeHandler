@@ -24,6 +24,9 @@ imageList=th.getFiles('inputFolder',['jpg','png'])
 
 ### If you need all files
 th.getFiles('inputFolder')
+
+### If you need case sensitive (only lowercase 'jpg')
+th.getFiles('inputFolder',['jpg'],caseSensitive=True)
 ```
 The output will be obtained instantly.
 ## Authors
