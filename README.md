@@ -16,14 +16,16 @@ Thus you can process these files and save them retaining the complex tree struct
 
 eg:
 If you have a complex tree structured folder and you need to get all the
-images('.jpg','.png') from the folder, use
+files from the folder, use
 ```python
 from treeHandler import treeHandler
 th=treeHandler()
-imageList=th.getFiles('inputFolder',['jpg','png'])
+fileFolder,fileList=th.getFiles('inputFolder')
+### fileFolder will contain the path of folders which contains files
+### fileList will contain the path of the files inside
 
-### If you need all files
-th.getFiles('inputFolder')
+### If you need specific file extensions eg: .jpg,.png
+th.getFiles('inputFolder',['jpg','png'])
 
 ### If you need case sensitive (only lowercase 'jpg')
 th.getFiles('inputFolder',['jpg'],caseSensitive=True)
