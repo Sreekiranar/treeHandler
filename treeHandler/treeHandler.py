@@ -41,7 +41,7 @@ class treeHandler:
 			if len(listFiles)>0:
 				sep='/' if '/' in listFiles[0] else '\\'
 				listFiles=list(map(lambda x:os.path.join(*x.split(sep)[1:]),listFiles))
-				listFolders=list(set([findSubFolder(path,sep) for path in listFiles]))
+				listFolders=list(set([self.findSubFolder(path,sep) for path in listFiles]))
 
 		except Exception as e:
 			print(e)
