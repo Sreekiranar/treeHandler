@@ -50,4 +50,4 @@ class treeHandler:
 
 	def findSubFolder(self,path,sep):
 	    index = path.rfind(sep)
-	    return (path[:index] if index != -1  else '.')
+	    return (path[:index] if index != -1  else '')
