@@ -5,11 +5,11 @@ with open('README.md','r') as f:
 
 
 setup(name='treeHandler',
-      version='1.3',
-      description='Python OS wrapper to grab all/specific files and folder containing those files from all the subdirectories',
+      version='1.4',
+      description='Python OS wrapper to grab all/specific files from all the subdirectories',
       long_description=long_description,
       long_description_content_type="text/markdown",
-      url='',
+      url='https://github.com/Sreekiranar/treeHandler.git',
       authors='Sreekiran A R`',
       author_email='sreekiranar@gmail.com',
       license='MIT',

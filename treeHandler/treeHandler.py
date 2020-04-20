@@ -7,7 +7,7 @@ class treeHandler:
 		pass
 
 	def getFiles(self,folderPath,formatList=[],caseSensitive=False):
-		"""Function to get the list of filepaths present in the tree structured folder given
+		"""Function to get the list of filepaths present in the tree structured folder given.
 		   You can also specify the formats required by providing a list in formatList
 
 		Args:
@@ -15,7 +15,7 @@ class treeHandler:
 			formatList (list):list of extensions of files of interest (eg: ['jpg','pdf'])
 			caseSensitive (boolean): if the extensions given have to be case sensitive or not (False by default)
 		Returns:
-			tuple: (List of all folders containing files, List of all the paths of files in the given folder)
+			list: List of all the paths of files in the given folder
 
 		Examples
 			If you want to get all the images('.jpg','.png') from all the subdirectories
@@ -27,11 +27,10 @@ class treeHandler:
 
 		"""
 		listFiles=[]
-		listFolders=[]
 		try:
 			for root, dirs, files in os.walk(folderPath):
-			    for fil in files:
-			        listFiles.append(os.path.join(root,fil))
+				for fil in files:
+					listFiles.append(os.path.join(root,fil))
 
 			for frmt in formatList:
 				if caseSensitive:
@@ -41,13 +40,22 @@ class treeHandler:
 			if len(listFiles)>0:
 				sep='/' if '/' in listFiles[0] else '\\'
 				listFiles=list(map(lambda x:os.path.join(*x.split(sep)[1:]),listFiles))
-				listFolders=list(set([self.findSubFolder(path,sep) for path in listFiles]))
 
 		except Exception as e:
 			print(e)
 
-		return listFolders,listFiles
+		return listFiles
 
-	def findSubFolder(self,path,sep):
-	    index = path.rfind(sep)
-	    return (path[:index] if index != -1  else '')
+	def findFileFolder(self,filePath):
+		"""function to get the folder in which file is saved
+
+		Args:
+			filePath (str): path of input file
+
+		Returns:
+			str: path of folder in which the input file is kept
+
+		"""
+		sep='/' if '/' in filePath else '\\'
+		index = filePath.rfind(sep)
+		return (filePath[:index] if index != -1  else '')
