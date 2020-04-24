@@ -15,47 +15,31 @@ class treeHandler:
 			formatList (list):list of extensions of files of interest (eg: ['jpg','pdf'])
 			caseSensitive (boolean): if the extensions given have to be case sensitive or not (False by default)
 		Returns:
-			list: List of all the paths of files in the given folder
+			dict: Dictionary with all the file names as key and their folder path as value
 
 		Examples
 			If you want to get all the images('.jpg','.png') from all the subdirectories
 			of "mainFolder"
 			>>> from treeHandler import treeHandler
 			>>> th=treeHandler()
-			>>> imageList=th.getFiles('mainFolder',['jpg','png'],caseSensitive=False)
-
+			>>> fileDict=th.getFiles('mainFolder',['jpg','png'],caseSensitive=False)
 
 		"""
 		listFiles=[]
+		listPaths=[]
 		try:
 			for root, dirs, files in os.walk(folderPath):
 				for fil in files:
-					listFiles.append(os.path.join(root,fil))
+					listFiles.append(fil)
+					listPaths.append(root)
 
+			fileDict=dict(zip(listFiles,listPaths))
 			for frmt in formatList:
 				if caseSensitive:
-					listFiles=list(filter(lambda x:x.endswith(frmt),listFiles))
+					fileDict = {k:v for (k,v) in outDict.items() if k.endswith(frmt)}
 				else:
-					listFiles=list(filter(lambda x:x.lower().endswith(frmt.lower()),listFiles))
-			if len(listFiles)>0:
-				sep='/' if '/' in listFiles[0] else '\\'
-				listFiles=list(map(lambda x:os.path.join(*x.split(sep)[1:]),listFiles))
-
+					fileDict={k:v for (k,v) in outDict.items() if k.lower().endswith(frmt.lower())}
 		except Exception as e:
 			print(e)
 
-		return listFiles
-
-	def findFileFolder(self,filePath):
-		"""function to get the folder in which file is saved
-
-		Args:
-			filePath (str): path of input file
-
-		Returns:
-			str: path of folder in which the input file is kept
-
-		"""
-		sep='/' if '/' in filePath else '\\'
-		index = filePath.rfind(sep)
-		return (filePath[:index] if index != -1  else '')
+		return fileDict

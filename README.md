@@ -20,11 +20,10 @@ files from the folder, use
 ```python
 from treeHandler import treeHandler
 th=treeHandler()
-fileFolder,fileList=th.getFiles('inputFolder')
-### fileFolder will contain the path of folders which contains files
-### fileList will contain the path of the files inside
+fileDict=th.getFiles('inputFolder')
+### fileDict will be a dictionary with all the file names as key and their folder path as value
 
-### If you need specific file extensions eg: .jpg,.png
+### If you need to filter specific file extensions eg: .jpg,.png
 th.getFiles('inputFolder',['jpg','png'])
 
 ### If you need case sensitive (only lowercase 'jpg')
@@ -36,9 +35,6 @@ The output will be obtained instantly.
 * **Sreekiran A R** - *Senior Analytics Consultant, AI Labs, Bridgei2i Analytics Solutions* -
  [Github](https://github.com/Sreekiranar) ,
 [Stackoverflow](https://stackoverflow.com/users/9605907/sreekiran)
-
-* **Anil Prasad M N** - *Project Manager, AI Labs, Bridgei2i Analytics Solutions* -
- [Github](https://github.com/anilprasadmn)
 
 ## License
 
