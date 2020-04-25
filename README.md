@@ -22,6 +22,7 @@ from treeHandler import treeHandler
 th=treeHandler()
 fileTuple=th.getFiles('inputFolder')
 ### fileTuple is a list of tuples with each tuple containing file names and their folder path
+### eg: [('image11.jpg', 'sampleData/folder1'),('image21.jpg', 'sampleData/folder2')]
 
 ### If you need to filter specific file extensions eg: .jpg,.png
 th.getFiles('inputFolder',['jpg','png'])
