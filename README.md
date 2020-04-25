@@ -20,8 +20,8 @@ files from the folder, use
 ```python
 from treeHandler import treeHandler
 th=treeHandler()
-fileDict=th.getFiles('inputFolder')
-### fileDict will be a dictionary with all the file names as key and their folder path as value
+fileTuple=th.getFiles('inputFolder')
+### fileTuple is a list of tuples with each tuple containing file names and their folder path
 
 ### If you need to filter specific file extensions eg: .jpg,.png
 th.getFiles('inputFolder',['jpg','png'])

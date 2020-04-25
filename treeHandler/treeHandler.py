@@ -15,31 +15,28 @@ class treeHandler:
 			formatList (list):list of extensions of files of interest (eg: ['jpg','pdf'])
 			caseSensitive (boolean): if the extensions given have to be case sensitive or not (False by default)
 		Returns:
-			dict: Dictionary with all the file names as key and their folder path as value
+			list: list of tuples with each tuple containing file names and their folder path
 
 		Examples
 			If you want to get all the images('.jpg','.png') from all the subdirectories
 			of "mainFolder"
 			>>> from treeHandler import treeHandler
 			>>> th=treeHandler()
-			>>> fileDict=th.getFiles('mainFolder',['jpg','png'],caseSensitive=False)
+			>>> fileTuple=th.getFiles('mainFolder',['jpg','png'],caseSensitive=False)
 
 		"""
-		listFiles=[]
-		listPaths=[]
+		listTuple=[]
 		try:
 			for root, dirs, files in os.walk(folderPath):
 				for fil in files:
-					listFiles.append(fil)
-					listPaths.append(root)
+					listTuple.append((fil,root))
 
-			fileDict=dict(zip(listFiles,listPaths))
 			for frmt in formatList:
 				if caseSensitive:
-					fileDict = {k:v for (k,v) in outDict.items() if k.endswith(frmt)}
+					listTuple = [(fname,fpath) for (fname,fpath) in listTuple if fname.endswith(frmt)]
 				else:
-					fileDict={k:v for (k,v) in outDict.items() if k.lower().endswith(frmt.lower())}
+					listTuple = [(fname,fpath) for (fname,fpath) in listTuple if fname.lower().endswith(frmt.lower())]
 		except Exception as e:
 			print(e)
 
-		return fileDict
+		return listTuple
